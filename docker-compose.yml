@@ -1,11 +1,13 @@
-version: '3.4'
+version: '2.4'
 
 services:
   app:
     image: 'antoniosk/desafio-api:latest'
     container_name: desafio
+    restart: on-failure
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8080:8080"
     environment:
@@ -35,3 +37,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: desafio_api
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 5s
+      retries: 10

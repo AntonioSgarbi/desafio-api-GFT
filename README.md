@@ -50,7 +50,16 @@ Exceeds:
 
 ## Play
 
+#### É necessário modificar variaveis de ambiente no arquivo `docker-compose.yml` ou personalizar o segundo exemplo
+#### `*** o email do administrador e do usuario injetados não podem ser o mesmo ***`
+
+
 ```
 docker-compose up
+```
+
+```
+GENERATE_ADM_EMAIL=admEmail@hotmail.com GENERATE_ADM_PASSWORD=senha123 GENERATE_USER_EMAIL=user2@hotmail.com
+GENERATE_USER_PASSWORD=senha321 MAIL_USERNAME=sender@mail.com MAIL_PASSWORD=senderPass docker-compose up
 ```
 #### (consumo preparado via Swagger no caminho '/swagger-ui/index.html')
